@@ -1,0 +1,25 @@
+ sum13: #a0 is the array, a1 iss the size of the array 
+ 	addi $v0, $v0, 0 #set result to 0
+ 	
+ 	thirteenloop:
+ 	lw $t0, ($a0) #set t0 to the first in the array
+ 	beq $t0, 13, thirteen #branch if it is a thirteen
+ 	add $v0, $v0, $t0 #add if it is not
+ 	
+ 	addi $t3, $t3, 1 #where are you in the array?
+ 	beq $t3, $a1,  thirteenfinished #branch if you're at the end
+ 	addi $a0, $a0, 4 #move through the array
+ 	
+ 	j thirteenloop
+ 	
+ 	thirteen: 
+
+ 		addi $t3, $t3, 1 #add 1, 
+ 		beq $t3, $a1,  thirteenfinished #out if done
+ 		addi $a0, $a0, 4 #move through the array
+ 		
+ 		addi $t3, $t3, 1 #add 1,
+ 		beq $t3, $a1,  thirteenfinished #out if done
+ 		addi $a0, $a0, 4 #move through the array
+		
+		j thirteenloop
