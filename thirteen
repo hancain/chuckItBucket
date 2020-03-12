@@ -23,3 +23,96 @@
  		addi $a0, $a0, 4 #move through the array
 		
 		j thirteenloop
+////////////////////////////////////////////////////////////////////
+
+******************************************************************
+     *
+     * Test indexOf
+     *
+     ******************************************************************/
+
+    Label array1 = wordData(5, 4, 7, 6, 9, 8, 2, 54, 1, 10, 14, 18, 20, 24, 28, -1);
+
+    @Test
+    public void indexOf_findsValueOccurringOnceOnly() {
+	run("indexOf", 2, array1);
+	Assert.assertEquals(6, get(v0));
+    }
+
+    @Test
+    public void indexOf_five() {
+	run("indexOf", 5, array1);
+	Assert.assertEquals(0, get(v0));
+    }
+
+    @Test
+    public void indexOf_four() {
+        run("indexOf", 4, array1);
+        Assert.assertEquals(1, get(v0));
+    }
+
+    @Test
+    public void indexOf_seven() {
+        run("indexOf", 7, array1);
+        Assert.assertEquals(2, get(v0));
+    }
+
+    @Test
+    public void indexOf_findsValueOccurringOnceOnly() {
+        run("indexOf", 2, array1);
+        Assert.assertEquals(6, get(v0));
+    }
+
+    @Test
+    public void indexOf_twenty() {
+        run("indexOf", 20, array1);
+        Assert.assertEquals(3, get(v0));
+    }
+
+    @Test
+    public void indexOf_eigteen() {
+        run("indexOf", 18, array1);
+        Assert.assertEquals(2, get(v0));
+    }
+
+   @Test
+    public void indexOf_returns_neg1_ifNotFound() {
+        run("indexOf", 3, array1);
+        Assert.assertEquals(-1, get(v0));
+    }
+
+    /******************************************************************
+     *
+     * Test max
+     *
+     ******************************************************************/
+
+    @Test
+    public void max_findsMaximum() {
+	run("max", array1, 16 );
+	Assert.assertEquals(54, get(v0));
+    }
+    label arrayb = wordData( 1, 2, 2, 9, 8, 12)
+
+    @Test
+        public void max_arrayb(){
+        run ("max", arrayb, 6)
+        Assert.assertEquals(12, get(v0))
+    }
+
+    label arrayc = wordData(-7, -8, -9, -4)
+
+    @Test
+        public void max_arrayc(){
+        run("max", arrayc, 4)
+        Assert.assertEquals(-4, get(v0))
+    }
+
+    label arrayd = wordData(-7, -8, -9, -4, 0)
+
+    @Test
+    public void max_arrayd(){
+        run("max", arrayd, 5)
+        Assert.assertEquals(0, get(v0))
+    }
+
